@@ -22,3 +22,5 @@ Route::match(["GET", "POST"], "/register", function () {
 })->name("register");
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource("users", "UserController");
