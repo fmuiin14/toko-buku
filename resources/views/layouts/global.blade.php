@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Larashop @yield("title")</title>
     <link rel="stylesheet" href="{{asset('polished/polished.min.css')}}">
-    <link rel="stylesheet" href="{{asset('polished/iconic/css/open-iconicbootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('polished/iconic/css/open-iconic-bootstrap.min.css')}}">
     <style>
         .grid-highlight {
             padding-top: 1rem;
@@ -33,9 +33,8 @@
     <script type="text/javascript">
         document.documentElement.className =
             document.documentElement.className.replace('no-js', 'js') +
-            (document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#
-                    BasicStructure ", "
-                    1.1 ") ? ' svg' : ' no-svg');
+            (document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure ", "1.1 ") ? ' svg' :
+                ' no-svg');
 
     </script>
 </head>
@@ -47,8 +46,8 @@
             <span class="oi oi-menu"></span>
         </button>
 
-        <input class="border-dark bg-primary-darkest form-control d-none
-d-md-block w-50 ml-3 mr-2" type="text" placeholder="Search" arialabel="Search">
+        <input class="border-dark bg-primary-darkest form-control d-none d-md-block w-50 ml-3 mr-2" type="text"
+            placeholder="Search" arialabel="Search">
         <div class="dropdown d-none d-md-block">
             @if(\Auth::user())
             <button class="btn btn-link btn-link-primary dropdown-toggle" id="navbar-dropdown" data-toggle="dropdown">
@@ -103,14 +102,16 @@ mb-4" type="text" placeholder="Search" aria-label="Search" />
                             <br/ </div> </div> </div> @yield("content") </div> </div> </div> <script
                                 src="https://code.jquery.com/jquery-3.3.1.min.js"
                                 integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
-                            </script>
+                            </scriptsrc=src=src=>
 
-                            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.
-min.js" integrity="sha384-
-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-                            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min
-.js" integrity="sha384-
-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+                                integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+                                crossorigin="anonymous">
+                            </script>
+                            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+                                integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+                                crossorigin="anonymous">
+                            </script>
 </body>
 
 </html>
