@@ -6,6 +6,26 @@ Users List
 
 @section('content')
 
+@if (session('status'))
+<div class="alert alert-success">
+    {{session('status')}}
+</div>
+@endif
+
+<div class="row">
+    <div class="col-md-6">
+        <form action="{{route('users.index')}}">
+            <div class="input-group mb-3">
+                <input type="text" value="{{Request::get('keyword')}}" name="keyword" class="form-control col-md-10"
+                    placeholder="Filter berdasarkan email">
+
+                <div class="input-group-append">
+                    <input type="submit" value="Filter" class="btn btn-primary">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -32,6 +52,14 @@ Users List
             </td>
             <td>
                 <a href="{{route('users.edit', [$user->id])}}" class="btn btn-info text-white btn-sm">Edit</a>
+                <a href="{{route('users.show', [$user->id])}}" class="btn btn-primary btn-sm">Detail</a>
+                <form onsubmit="return confirm('Delete this user permanently?')" class="d-inline"
+                    action="{{route('users.destroy', $user->id)}}" method="POST">
+                    @csrf
+                    @method("DELETE")
+                    <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+
+                </form>
             </td>
         </tr>
         @endforeach

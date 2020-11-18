@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\ViewErrorBag;
 
 class UserController extends Controller
 {
@@ -61,7 +62,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $users = \App\User::findOrFail($id);
+        return view('users.show', ['users' => $users]);
     }
 
     /**
@@ -113,6 +115,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $users = \App\User::findOrFail($id);
+        $users->delete();
+        return redirect()->route('users.index')->with('status', 'User successfully deleted');
     }
 }
