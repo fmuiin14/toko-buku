@@ -1,7 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.global')
 
 @section('title')
 Home Toko Buku
+@endsection
+
+@section('pageTitle')
+Home
 @endsection
 
 @section('content')
