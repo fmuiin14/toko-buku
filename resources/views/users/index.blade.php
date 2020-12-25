@@ -18,17 +18,21 @@ Users list
     </div>
 
 <br>
+
 @if(session('status'))
 <div class="alert alert-success">
     {{session('status')}}
 </div>
 @endif
+
 <div class="row">
     <div class="col-md-12 text-right">
         <a href="{{route('users.create')}}" class="btn btn-primary">Create user</a>
     </div>
 </div>
+
 <br>
+
 <table class="table table-bordered">
     <thead>
         <tr>
