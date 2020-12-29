@@ -76,7 +76,7 @@ Edit User
             value="{{$user->email}}" disabled>
         <br>
 
-        <input class="btn btn-primary" type="submit" value="save">
+        <input class="btn btn-primary" type="submit" value="Save">
     </form>
 </div>
 @endsection

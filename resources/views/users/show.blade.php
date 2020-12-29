@@ -20,7 +20,7 @@ Detail User
             <b>Username:</b><br>
             {{$users->email}}
             <br><br>
-            <b>Phone number</b>
+            <b>Phone number</b><br>
             {{$users->phone}}
             <br><br>
             <b>Address</b><br>
