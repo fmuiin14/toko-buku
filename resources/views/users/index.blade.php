@@ -20,13 +20,18 @@ Users List
 
         <div class="col-md-6">
 
-            <input {{Request::get('status') == 'ACTIVE' ? 'checked' : ''}} value="ACTIVE" name="status" type="radio" class="form-control" id="active">
+            <input {{Request::get('status') == 'ACTIVE' ? 'checked' : ''}} value="ACTIVE" name="status" type="radio"
+                class="form-control" id="active">
             <label for="active">Active</label>
 
-            <input {{Request::get('status') == 'INACTIVE' ? 'checked' : ''}} value="INACTIVE" name="status" type="radio" class="form-control" id="inactive">
+            <input {{Request::get('status') == 'INACTIVE' ? 'checked' : ''}} value="INACTIVE" name="status" type="radio"
+                class="form-control" id="inactive">
+            <label for="inactive">inactive</label>
+
+            <input type="submit" value="Filter" class="btn btn-primary">
+
 
         </div>
-    </div>
     </div>
 </form>
 
@@ -99,7 +104,7 @@ Users List
         @endforeach
     <tfoot>
         <tr>
-            <td colspan=10>{{$users->links()}}</td>
+            <td colspan=10>{{$users->appends(Request::all())->links()}}</td>
         </tr>
     </tfoot>
     </tbody>
