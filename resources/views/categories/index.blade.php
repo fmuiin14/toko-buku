@@ -50,7 +50,9 @@ Category List
                         No image
                         @endif
                     </td>
-                    <td>[TODO : ACTIONS]</td>
+                    <td>
+                        <a href="{{route('categories.edit', [$category->id])}}" class="btn btn-info btn-sm">Edit</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
