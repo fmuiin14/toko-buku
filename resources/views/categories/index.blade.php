@@ -13,9 +13,10 @@ Category List
 <div class="row">
     <div class="col-md-6">
         <form action="{{route('categories.index')}}">
-        
+
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Filter by category name" name="name" value="{{Request::get('name')}}">
+                <input type="text" class="form-control" placeholder="Filter by category name" name="name"
+                    value="{{Request::get('name')}}">
 
                 <div class="input-group-append">
                     <input type="submit" class="btn btn-primary" value="Filter">
@@ -40,14 +41,22 @@ Category List
 <hr class="my-3">
 
 @if (session('status'))
-    <div class="row">
-        <div class="col-md-12">
-            <div class="alert alert-warning">
-                {{session('status')}}
-            </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="alert alert-warning">
+            {{session('status')}}
         </div>
     </div>
+</div>
 @endif
+
+<div class="row">
+    <div class="col-md-12 text-right">
+        <a href="{{route('categories.create')}}" class="btn btn-primary">Create Category</a>
+    </div>
+</div>
+
+<br>
 
 <div class="row">
     <div class="col-md-12">
@@ -74,9 +83,11 @@ Category List
                     </td>
                     <td>
                         <a href="{{route('categories.edit', [$category->id])}}" class="btn btn-info btn-sm">Edit</a>
-                        <a href="{{route('categories.show', [$category->id])}}" class="btn btn-primary btn-sm">Detail</a>
-                        <form class="d-inline" action="{{route('categories.destroy', [$category->id])}}" method="POST" onsubmit="return confirm('Move category to trash?')">
-                        
+                        <a href="{{route('categories.show', [$category->id])}}"
+                            class="btn btn-primary btn-sm">Detail</a>
+                        <form class="d-inline" action="{{route('categories.destroy', [$category->id])}}" method="POST"
+                            onsubmit="return confirm('Move category to trash?')">
+
                             @csrf
                             <input type="hidden" value="DELETE" name="_method">
 
