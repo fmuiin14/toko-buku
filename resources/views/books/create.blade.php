@@ -6,9 +6,16 @@
 
 @section('content')
 
+
 <div class="row">
     <div class="col-md-8">
-
+        
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{session('status')}}
+            </div>
+        @endif
+        
         <form action="{{route('books.store')}}" method="POST" enctype="multipart/form-data" class="shadow-sm p-3 bg-white">
         
             @csrf
