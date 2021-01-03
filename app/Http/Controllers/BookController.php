@@ -11,9 +11,15 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $books = \App\Book::with('categories')->paginate(10);
+        $status = $request->get('status');
+
+        if($status) {
+            $books = \App\Book::with('categories')->where('status', strtoupper($status))->paginate(10);
+        } else {
+            $books = \App\Book::with('categories')->paginate(10);
+        }
 
         return view('books.index', ['books' => $books]);
     }
@@ -90,7 +96,9 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        //
+        $book = \App\Book::findOrFail($id);
+
+        return view('books.edit', ['book' =>$book]);
     }
 
     /**
@@ -102,7 +110,37 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $book = \App\Book::findOrFail($id);
+
+        $book->title = $request->get('title');
+        $book->slug = $request->get('slug');
+        $book->description = $request->get('description');
+        $book->author = $request->get('author');
+        $book->publisher = $request->get('publisher');
+        $book->stock = $request->get('stock');
+        $book->price = $request->get('price');
+
+        $new_cover = $request->file('cover');
+
+        if($new_cover) {
+            if($book->cover && file_exists(storage_path('app/public'.$book->cover))) {
+                \Storage::delete('public/'.$book->cover);
+            }
+
+            $new_cover_path = $new_cover->store('book-covers', 'public');
+
+            $book->cover = $new_cover_path;
+        }
+
+        $book->updated_by = \Auth::user()->id;
+
+        $book->status = $request->get('status');
+
+        $book->save();
+
+        $book->categories()->sync($request->get('categories'));
+
+        return redirect()->route('books.edit', [$book->id])->with('status', 'Book successfully updated');
     }
 
     /**
@@ -113,6 +151,27 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $book = \App\Book::findOrFail($id);
+        $book->delete();
+
+        return redirect()->route('books.index')->with('status', 'Book moved to trash');
+    }
+
+    public function trash() {
+        $books = \App\Book::onlyTrashed()->paginate(10);
+
+        return view('books.trash', ['books' => $books]);
+    }
+
+    public function restore($id) {
+        $book = \App\Book::withTrashed()->findOrFail($id);
+
+        if($book->trashed()) {
+            $book->restore();
+
+            return redirect()->route('books.trash')->with('status', 'book successfully restored');
+        } else {
+            return redirect()->route('books.trash')->with('status', 'Book is not in trash');
+        }
     }
 }
