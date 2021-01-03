@@ -60,6 +60,8 @@ class BookController extends Controller
 
         $new_book->save();
 
+        $new_book->categories()->attach($request->get('categories'));
+
         if($request->get('save_action') == 'PUBLISH') {
             return redirect()->route('books.create')->with('status', 'Book successfully saved and published');
         }  else {
