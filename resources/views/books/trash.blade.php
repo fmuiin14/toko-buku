@@ -14,31 +14,43 @@ Trashed Books
         </div>
         @endif
 
-                <div class="row">
-                    <div class="col-md-6"></div>
-                    <div class="col-md-6">
-                        <ul class="nav nav-pills card-header-pills">
-                            <li class="nav-item">
-                                <a class="nav-link {{Request::get('status') == NULL && Request::path() == 'books' ? 'active' : ''}}"
-                                    href="{{route('books.index')}}">All</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link {{Request::get('status') == 'publish' ? 'active' : ''}}"
-                                    href="{{route('books.index', ['status' => 'publish'])}}">Publish</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link {{Request::get('status') == 'draft' ? 'active' : ''}}"
-                                    href="{{route('books.index', ['status' => 'draft'])}}">Draft</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link {{Request::path() == 'books/trash' ? 'active' : ''}}"
-                                    href="{{route('books.trash')}}">Trash</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+        <div class="row">
+            <div class="col-md-6">
+                <form action="{{route('books.index')}}">
+                    <div class="input-group">
+                        <input name="keyword" type="text" value="{{Request::get('keyword')}}" class="form-control"
+                            placeholder="Filter by title">
 
-                <hr class="my-3">
+                        <div class="input-group-append">
+                            <input type="submit" value="Filter" class="btn btn-primary">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-md-6">
+                <ul class="nav nav-pills card-header-pills">
+                    <li class="nav-item">
+                        <a class="nav-link {{Request::get('status') == NULL && Request::path() == 'books' ? 'active' : ''}}"
+                            href="{{route('books.index')}}">All</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{Request::get('status') == 'publish' ? 'active' : ''}}"
+                            href="{{route('books.index', ['status' => 'publish'])}}">Publish</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{Request::get('status') == 'draft' ? 'active' : ''}}"
+                            href="{{route('books.index', ['status' => 'draft'])}}">Draft</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{Request::path() == 'books/trash' ? 'active' : ''}}"
+                            href="{{route('books.trash')}}">Trash</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <hr class="my-3">
 
         <table class="table table-bordered table-stripped">
             <thead>
@@ -64,23 +76,23 @@ Trashed Books
                     <td>
                         <ul class="pl-3">
                             @foreach ($book->categories as $category)
-                                <li>{{$category->name}}</li>
+                            <li>{{$category->name}}</li>
                             @endforeach
-                        </ul>    
+                        </ul>
                     </td>
                     <td>{{$book->stock}}</td>
                     <td>{{$book->price}}</td>
                     <td>
-                        <a href="{{route('books.restore', [$book->id])}}"
-                            class="btn btn-success btn-sm">Restore</a>
+                        <a href="{{route('books.restore', [$book->id])}}" class="btn btn-success btn-sm">Restore</a>
 
-                            <form method="POST" action="{{route('books.delete-permanent', [$book->id])}}" class="d-inline" onsubmit="return confirm ('Delete this book permanently?')">
+                        <form method="POST" action="{{route('books.delete-permanent', [$book->id])}}" class="d-inline"
+                            onsubmit="return confirm ('Delete this book permanently?')">
                             @csrf
 
                             <input type="hidden" name="_method" value="DELETE">
 
                             <input type="submit" value="Delete" class="btn btn-danger btn-sm">
-                            </form>
+                        </form>
                     </td>
                 </tr>
                 @endforeach

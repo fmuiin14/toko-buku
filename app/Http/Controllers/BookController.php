@@ -14,11 +14,12 @@ class BookController extends Controller
     public function index(Request $request)
     {
         $status = $request->get('status');
+        $keyword = $request->get('keyword') ? $request->get('keyword') : '';
 
         if($status) {
-            $books = \App\Book::with('categories')->where('status', strtoupper($status))->paginate(10);
+            $books = \App\Book::with('categories')->where('title', "LIKE", "%$keyword%")->where('status', strtoupper($status))->paginate(10);
         } else {
-            $books = \App\Book::with('categories')->paginate(10);
+            $books = \App\Book::with('categories')->where('title', "LIKE", "%$keyword%")->paginate(10);
         }
 
         return view('books.index', ['books' => $books]);

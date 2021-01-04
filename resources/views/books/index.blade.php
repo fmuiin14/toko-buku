@@ -1,24 +1,46 @@
 @extends('layouts.global')
 
 @section('title')
-    Books List
+Books List
 @endsection
 
 @section('content')
 
 
+
+
 <div class="row">
     <div class="col-md-12">
 
+        @if (session('status'))
+        <div class="alert alert-success">
+            {{session('status')}}
+        </div>
+        @endif
+
         <div class="row">
-            <div class="col-md-6"></div>
+            <div class="col-md-6">
+                <form action="{{route('books.index')}}">
+                    <div class="input-group">
+                        <input name="keyword" type="text" value="{{Request::get('keyword')}}" class="form-control"
+                            placeholder="Filter by title">
+
+                        <div class="input-group-append">
+                            <input type="submit" value="Filter" class="btn btn-primary">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
             <div class="col-md-6">
                 <ul class="nav nav-pills card-header-pills">
                     <li class="nav-item">
-                        <a class="nav-link {{Request::get('status') == NULL && Request::path() == 'books' ? 'active' : ''}}" href="{{route('books.index')}}">All</a>
+                        <a class="nav-link {{Request::get('status') == NULL && Request::path() == 'books' ? 'active' : ''}}"
+                            href="{{route('books.index')}}">All</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{Request::get('status') == 'publish' ? 'active' : ''}}" href="{{route('books.index', ['status' => 'publish'])}}">Publish</a>
+                        <a class="nav-link {{Request::get('status') == 'publish' ? 'active' : ''}}"
+                            href="{{route('books.index', ['status' => 'publish'])}}">Publish</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{Request::get('status') == 'draft' ? 'active' : ''}}"
@@ -41,12 +63,6 @@
                 </a>
             </div>
         </div>
-
-        @if (session('status'))
-            <div class="alert alert-danger">
-                {{session('status')}}
-            </div>
-        @endif
 
         <table class="table table-bordered table-stripped">
             <thead>
@@ -81,7 +97,7 @@
                     <td>
                         <ul class="pl-3">
                             @foreach ($book->categories as $category)
-                                <li>{{$category->name}}</li>                                
+                            <li>{{$category->name}}</li>
                             @endforeach
                         </ul>
                     </td>
@@ -90,8 +106,9 @@
                     <td>
                         <a href="{{route('books.edit', [$book->id])}}" class="btn btn-sm btn-info">Edit</a>
 
-                        <form method="POST" class="d-inline" onsubmit="return confirm('Move book to trash?')" action="{{route('books.destroy', [$book->id])}}">
-                        
+                        <form method="POST" class="d-inline" onsubmit="return confirm('Move book to trash?')"
+                            action="{{route('books.destroy', [$book->id])}}">
+
                             @csrf
                             <input type="hidden" name="_method" value="DELETE">
                             <input type="submit" value="Trash" class="btn btn-danger btn-sm">
@@ -99,7 +116,7 @@
                         </form>
                     </td>
                 </tr>
-                    
+
                 @endforeach
             </tbody>
             <tfoot>
