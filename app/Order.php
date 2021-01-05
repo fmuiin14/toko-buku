@@ -13,4 +13,14 @@ class Order extends Model
     public function books() {
         return $this->belongsToMany('App\Book')->withPivot('quantity');
     }
+
+    public function getTotalQuantityAttribute() {
+        $total_quantity = 0;
+
+        foreach ($this->books as $book) {
+            $total_quantity += $book->pivot->quantity;
+        }
+
+        return $total_quantity;
+    }
 }
