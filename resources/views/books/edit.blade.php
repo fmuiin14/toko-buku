@@ -20,7 +20,12 @@
             <input type="hidden" name="_method" value="PUT">
 
             <label for="title">Title</label>
-            <input type="text" class="form-control" value="{{$book->title}}" name="title" placeholder="book title"> <br>
+            <input type="text" class="form-control {{$errors->first('title') ? "is-invalid" : ""}}"
+                value="{{old('title') ? old('title') : $book->title}}" name="title" placeholder="book title"> 
+                <div class="invalid-feedback">
+                    {{$errors->first('title')}}
+                </div>
+                <br>
 
             <label for="cover">Cover</label><br>
             <small class="text-muted">Current cover</small> <br>
@@ -34,25 +39,53 @@
             <br><br>
 
             <label for="slug">Slug</label> <br>
-            <input type="text" class="form-control" value="{{$book->slug}}" name="slug" placeholder="enter-a-slug"> <br>
+            <input type="text" class="form-control {{$errors->first('slug') ? "is-invalid" : ""}}" value="{{old('slug') ? old('slug') : $book->slug}}" name="slug" placeholder="enter-a-slug"> 
+            <div class="invalid-feedback">
+                {{$errors->first('slug')}}
+            </div>
+            <br>
 
             <label for="description">Description</label> <br>
-            <textarea name="description" id="description" class="form-control">{{$book->description}}</textarea> <br>
+            <textarea name="description" id="description"
+                class="form-control {{$errors->first('description') ? "is-invalid" : ""}}">{{old('description') ? old('description') : $book->description}}</textarea>
+                <div class="invalid-feedback">
+                    {{$errors->first('description')}}
+                </div>
+            <br>
 
             <label for="categories">Categories</label>
             <select multiple class="form-control" name="categories[]" id="categories"></select> <br><br>
 
             <label for="stock">Stock</label> <br>
-            <input type="text" class="form-control" placeholder="stock" id="stock" name="stock" value="{{$book->stock}}"> <br>
+            <input type="text" class="form-control {{$errors->first('stock') ? "is-invalid" : ""}}" placeholder="stock" id="stock" name="stock" value="{{old('stock') ? old('stock') : $book->stock}}">
+            <div class="invalid-feedback">
+                {{$errors->first('stock')}}
+            </div>
+            <br>
 
             <label for="author">Author</label>
-            <input placeholder="Author" value="{{$book->author}}" type="text" id="author" name="author" class="form-control"> <br>
+            <input placeholder="Author" value="{{old('author') ? old('author') : $book->author}}" type="text" id="author" name="author" class="form-control {{$errors->first('author') ? "is-invalid" : ""}}">
+            <div class="invalid-feedback">
+                {{$errors->first('author')}}
+            </div>
+            <br>
 
             <label for="publisher">Publisher</label><br>
-            <input class="form-control" type="text" placeholder="Publisher" name="publisher" id="publisher" value="{{$book->publisher}}"> <br>
+            <input class="form-control {{$errors->first('publisher') ? "is-invalid" : ""}}" type="text"
+                placeholder="Publisher" name="publisher" id="publisher"
+                value="{{old('publisher') ? old('publisher') : $book->publisher}}"> 
+                <div class="invalid-feedback">
+                    {{$errors->first('publisher')}}
+                </div>
+                <br>
 
             <label for="price">Price</label> <br>
-            <input type="text" class="form-control" name="price" placeholder="Price" id="price" value="{{$book->price}}"> <br>
+            <input type="text" class="form-control {{$errors->first('price') ? "is-invalid" : ""}}" name="price"
+                placeholder="Price" id="price" value="{{old('price') ? old('price') : $book->price}}"> 
+                <div class="invalid-feedback">
+                    {{$errors->first('price')}}
+                </div>
+                <br>
 
             <label for="status">Status</label>
             <select name="status" id="status" class="form-control">
