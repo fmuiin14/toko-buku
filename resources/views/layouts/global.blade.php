@@ -45,8 +45,8 @@
             <span class="oi oi-menu"></span>
         </button>
 
-        <input class="border-dark bg-primary-darkest form-control d-none d-md-block w-50 ml-3 mr-2" type="text"
-            placeholder="Search" arialabel="Search">
+        <input style="background-color: #202e78" class="border-dark bg-primary-darkest form-control d-none d-md-block w-50 ml-3 mr-2" type="text" disabled
+            arialabel="Search">
 
         <div class="dropdown d-none d-md-block">
             @if(\Auth::user())
