@@ -27,21 +27,26 @@ Edit Category
         <input type="hidden" value="PUT" name="_method">
 
         <label for="category_name">Category Name</label>
-        <input type="text" class="form-control" name="name" value="{{$category->name}}">
-
-        <br>
+        <input type="text" class="form-control {{$errors->first('name') ? "is-invalid" : ""}}" name="name" value="{{old('name') ? old('name') : $category->name}}">
+        <div class="invalid-feedback">
+            {{$errors->first('name')}}
+        </div>
+        <br><br>
 
         <label for="slug">Category Slug</label>
-        <input type="text" class="form-control" value="{{$category->slug}}" name="slug">
-
-        <br>
+        <input type="text" class="form-control {{$errors->first('slug') ? "is-invalid" : ""}}"
+            value="{{old('slug') ? old('slug') : $category->slug}}" name="slug">
+            <div class="invalid-feedback">
+                {{$errors->first('slug')}}
+            </div>
+        <br><br>
 
         <label for="category_image">Category Image</label><br>
         @if ($category->image)
             <span>Current Image</span><br><br>
             <img src="{{asset('storage/'.$category->image)}}" width="120"><br><br>
         @endif
-        <input type="file" class="form-control" name="image">
+        <input type="file" class="form-control {{$errors->first('image') ? "is-invalid" : ""}}" name="image">
         <small class="text-muted">Kosongkan jika tidak ingin mengubah gambar</small>
 
         <br><br>
