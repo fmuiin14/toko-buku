@@ -45,7 +45,7 @@ __('Login') }}</div> --}}
                             <div class="checkbox">
                                 <input type="checkbox" id="remember" name="remember"
                                     {{ old('remember') ? 'checked' : '' }}> <label
-                                    for="remember">{{ __('Remember Me') }}</label>
+                                    for="remember">{{ __('Lihat Password') }}</label>
                             </div>
                         </div>
                     </div>
@@ -68,4 +68,18 @@ route('password.request') }}">
     </div>
 </div>
 </div>
+
+<script>
+    const togglePassword = document.querySelector('#remember');
+    const password = document.querySelector('#password');
+
+    togglePassword.addEventListener('click', function (e) {
+        // toggle the type attribute
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        // toggle the eye slash icon
+        this.classList.toggle('fa-eye-slash');
+    });
+
+</script>
 @endsection

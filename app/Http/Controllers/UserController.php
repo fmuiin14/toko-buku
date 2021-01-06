@@ -132,10 +132,10 @@ class UserController extends Controller
     {
 
         \Validator::make($request->all(), [
-            "name" => "required|min:5|max:100",
+            "name" => "required|min:5|max:50",
             "roles" => "required",
-            "phone" => "required|digits_between:10,12",
-            "address" => "required|min:20|max:200",
+            "phone" => "required|digits_between:10,13",
+            "address" => "required|min:10|max:200",
         ])->validate();
 
 

@@ -63,6 +63,7 @@ Category List
         <table class="table table-bordered table-stripped">
             <thead>
                 <tr>
+                    <th><b>No</b></th>
                     <th><b>Name</b></th>
                     <th><b>Slug</b></th>
                     <th><b>Image</b></th>
@@ -70,8 +71,9 @@ Category List
                 </tr>
             </thead>
             <tbody>
-                @foreach ($categories as $category)
+                @foreach ($categories as $index => $category)
                 <tr>
+                    <td>{{$index +1}}</td>
                     <td>{{$category->name}}</td>
                     <td>{{$category->slug}}</td>
                     <td>

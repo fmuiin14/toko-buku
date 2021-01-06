@@ -34,6 +34,7 @@ Orders List
         <table class="table table-stripped table-bordered">
             <thead>
                 <tr>
+                    <th>No</th>
                     <th>Invoice number</th>
                     <th>Status</th>
                     <th>Buyer</th>
@@ -44,8 +45,9 @@ Orders List
                 </tr>
             </thead>
             <tbody>
-                @foreach ($orders as $order)
+                @foreach ($orders as $index => $order)
                 <tr>
+                    <td>{{$index +1}}</td>
                     <td>{{$order->invoice_number}}</td>
                     <td>
                         @if ($order->status == "SUBMIT")

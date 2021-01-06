@@ -54,7 +54,7 @@ Create New User
         <label for="phone">Phone Number</label>
         <br>
         <input value="{{old('phone')}}" type="text" name="phone"
-            onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;" max="15" class="form-control {{$errors->first('phone') ? "is-invalid" : ""}}">
+            onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;" maxlength="15" class="form-control {{$errors->first('phone') ? "is-invalid" : ""}}">
         <div class="invalid-feedback">
             {{$errors->first('phone')}}
         </div>

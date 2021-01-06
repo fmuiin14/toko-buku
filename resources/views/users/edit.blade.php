@@ -55,7 +55,9 @@ Edit User
         <br><br>
         <label for="phone">Phone Number</label>
         <br>
-        <input type="text" name="phone" class="form-control {{$errors->first('phone') ? "is-invalid" : ""}}" value="{{old('phone') ? old('phone') : $user->phone}}">
+        <input type="text" name="phone"
+            onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;" maxlength="15" class="form-control {{$errors->first('phone') ? "is-invalid" : ""}}"
+            value="{{old('phone') ? old('phone') : $user->phone}}">
         <div class="invalid-feedback">
             {{$errors->first('phone')}}
         </div>

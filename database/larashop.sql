@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
--- Host: mysql
--- Generation Time: Nov 21, 2018 at 08:57 AM
--- Server version: 5.7.21
--- PHP Version: 7.1.9
+-- Host: 127.0.0.1
+-- Generation Time: Jan 06, 2021 at 04:29 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.3.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -37,8 +36,8 @@ CREATE TABLE `books` (
   `publisher` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `cover` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` double(8,2) NOT NULL,
-  `views` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `stock` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `views` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `stock` int(10) UNSIGNED NOT NULL DEFAULT 0,
   `status` enum('PUBLISH','DRAFT') COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_by` int(11) NOT NULL,
   `updated_by` int(11) DEFAULT NULL,
@@ -53,7 +52,7 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`id`, `title`, `slug`, `description`, `author`, `publisher`, `cover`, `price`, `views`, `stock`, `status`, `created_by`, `updated_by`, `deleted_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(2, 'How to become great man', 'how-to-become-great-man', 'The book description', 'Noone', 'Nopublisher', 'book-covers/riSvIG5fsoNOCE0OhwIdNh3EewgYuCLAqEPSaV9w.png', 390000.00, 0, 330, 'PUBLISH', 1, 1, NULL, '2018-07-26 07:20:14', '2018-10-02 08:49:45', '2018-10-02 08:49:45'),
+(2, 'How to become great man', 'how-to-become-great-man', 'The book description', 'Noone', 'Nopublisher', 'book-covers/riSvIG5fsoNOCE0OhwIdNh3EewgYuCLAqEPSaV9w.png', 390000.00, 0, 330, 'PUBLISH', 1, 24, NULL, '2018-07-26 07:20:14', '2021-01-06 00:10:15', NULL),
 (4, 'How to become ninja Developer', 'how-to-become-ninja-developer', 'Descriptions goes here', 'Muhammad Azamuddin', 'Indie Publisher', 'book-covers/2x9OEHtj57kVp9UZe9Av39TBMNphRw8FrEh4Nium.png', 239000.00, 0, 9, 'PUBLISH', 1, NULL, NULL, '2018-10-02 07:06:39', '2018-10-02 08:42:41', NULL);
 
 -- --------------------------------------------------------
@@ -77,7 +76,7 @@ CREATE TABLE `book_category` (
 INSERT INTO `book_category` (`id`, `book_id`, `category_id`, `created_at`, `updated_at`) VALUES
 (2, 2, 5, NULL, NULL),
 (4, 4, 5, NULL, NULL),
-(5, 4, 6, NULL, NULL);
+(6, 2, 4, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -125,17 +124,17 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `slug`, `image`, `created_by`, `updated_by`, `deleted_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(2, 'Programming', 'programming', 'category_images/TOzjSpDAhf7IEaKn3z3UNZMowaodnLqtUtczfEBI.jpeg', 1, 1, NULL, NULL, '2018-07-16 04:04:48', '2018-07-26 07:17:59'),
-(3, 'Hardware', 'hardware', 'category_images/sCYd3L9ZHPUa7bnTWIjaTDO3RWzCwfBPq5qbQL3h.jpeg', 1, 1, NULL, NULL, '2018-07-23 03:21:00', '2018-07-26 07:18:13'),
-(4, 'Ilmiiah', 'ilmiiah', 'category_images/ej14L2H7HLHcvCFGZoT9GwTb2rX9nmEUNyKkEXKZ.jpeg', 1, NULL, NULL, NULL, '2018-07-23 03:21:15', '2018-07-23 03:21:15'),
+(2, 'Wekeke ek ew kew ew', 'wekeke-ek-ew-kew-ew', 'category_images/n8gfQFT4PD5OzKt7KFJLANMZMPXbvHMpLFCySP3i.png', 1, 24, NULL, NULL, '2018-07-16 04:04:48', '2021-01-05 20:27:26'),
+(3, 'Hardware', 'hardware', 'category_images/sCYd3L9ZHPUa7bnTWIjaTDO3RWzCwfBPq5qbQL3h.jpeg', 1, 1, NULL, NULL, '2018-07-23 03:21:00', '2021-01-06 07:37:07'),
+(4, 'Ilmiiah', 'ilmiiah', 'category_images/ej14L2H7HLHcvCFGZoT9GwTb2rX9nmEUNyKkEXKZ.jpeg', 1, NULL, NULL, NULL, '2018-07-23 03:21:15', '2021-01-05 20:27:38'),
 (5, 'Self Development', 'self-development', 'category_images/nE9xMN84MaKeHyVG1jcwPF1ChOUvaYzGXjSI19Mu.png', 1, NULL, NULL, NULL, '2018-07-26 07:18:50', '2018-07-26 07:18:50'),
 (6, 'Business', 'business', 'category_images/vLhVcc7mSOm5WzdxEifRqbj41KAwrxvB4qfEEkRh.png', 1, NULL, NULL, NULL, '2018-07-26 07:21:27', '2018-07-26 07:21:27'),
-(7, 'Joseph Mueller', 'incidunt-ut-sint-necessitatibus-aut', '/tmp/f22bc6dd11e9659a530ecdf0b594a542.jpg', 1, NULL, NULL, '2018-10-02 07:10:14', '2018-08-06 08:29:40', '2018-10-02 07:10:14'),
-(8, 'Alize Jacobs', 'voluptatem-aut-explicabo-voluptatum-est', '/tmp/7eeba2afaad844803b7029f670058def.jpg', 1, NULL, NULL, '2018-10-02 07:10:19', '2018-08-06 08:29:40', '2018-10-02 07:10:19'),
-(9, 'Shaniya Collins', 'consequatur-nihil-saepe-facilis-hic', '/tmp/75f3166283222da447dc60d790ba8fec.jpg', 1, NULL, NULL, '2018-10-02 07:10:09', '2018-08-06 08:29:40', '2018-10-02 07:10:09'),
-(10, 'Mrs. Magdalena Graham I', 'necessitatibus-ut-assumenda-et-eligendi-aut', '/tmp/96ec46942ad5c6873f7c3e3bedc031bf.jpg', 1, NULL, NULL, '2018-10-02 07:10:23', '2018-08-06 08:29:40', '2018-10-02 07:10:23'),
-(12, 'Ronny Emmerich', 'quidem-placeat-cum-et-ducimus-culpa', '/tmp/30d7c88ce5ec62b924e5baed6056ff73.jpg', 1, NULL, NULL, '2018-10-02 07:09:59', '2018-08-06 08:29:40', '2018-10-02 07:09:59'),
-(13, 'Maximus Cole', 'et-eum-eum-cupiditate', '/tmp/01c1d77b125096c1231390022fe64f42.jpg', 1, NULL, NULL, '2018-10-02 07:10:05', '2018-08-06 08:29:40', '2018-10-02 07:10:05'),
+(7, 'Joseph Mueller', 'incidunt-ut-sint-necessitatibus-aut', '/tmp/f22bc6dd11e9659a530ecdf0b594a542.jpg', 1, NULL, NULL, NULL, '2018-08-06 08:29:40', '2021-01-06 07:37:13'),
+(8, 'Alize Jacobs', 'voluptatem-aut-explicabo-voluptatum-est', '/tmp/7eeba2afaad844803b7029f670058def.jpg', 1, NULL, NULL, NULL, '2018-08-06 08:29:40', '2021-01-06 07:37:18'),
+(9, 'Shaniya Collins', 'consequatur-nihil-saepe-facilis-hic', '/tmp/75f3166283222da447dc60d790ba8fec.jpg', 1, NULL, NULL, NULL, '2018-08-06 08:29:40', '2021-01-06 07:37:22'),
+(10, 'Mrs. Magdalena Graham I', 'necessitatibus-ut-assumenda-et-eligendi-aut', '/tmp/96ec46942ad5c6873f7c3e3bedc031bf.jpg', 1, NULL, NULL, NULL, '2018-08-06 08:29:40', '2021-01-06 07:37:26'),
+(12, 'Ronny Emmerich', 'quidem-placeat-cum-et-ducimus-culpa', '/tmp/30d7c88ce5ec62b924e5baed6056ff73.jpg', 1, NULL, NULL, '2021-01-06 07:39:51', '2018-08-06 08:29:40', '2021-01-06 07:39:51'),
+(13, 'Maximus Cole', 'et-eum-eum-cupiditate', '/tmp/01c1d77b125096c1231390022fe64f42.jpg', 1, NULL, NULL, NULL, '2018-08-06 08:29:40', '2021-01-06 07:37:35'),
 (14, 'Rosella Mayert', 'omnis-quis-ut-esse-sapiente-ea', '/tmp/7115ee98fbad181ee81a02e7b5273fa1.jpg', 1, NULL, NULL, NULL, '2018-08-06 08:29:40', '2018-08-06 08:29:40'),
 (15, 'Trinity Sawayn', 'dignissimos-facilis-quam-non-fugiat-voluptatibus-inventore-reiciendis', '/tmp/d2d88e81c0661535fd3727813e348507.jpg', 1, NULL, NULL, NULL, '2018-08-06 08:29:40', '2018-08-06 08:29:40'),
 (16, 'Delpha Cruickshank', 'soluta-aperiam-sint-vel-voluptatem-hic-ut', '/tmp/9e46dad5b71f00b2013ea311d77ba0a4.jpg', 1, NULL, NULL, NULL, '2018-08-06 08:29:40', '2018-08-06 08:29:40'),
@@ -199,7 +198,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `total_price`, `invoice_number`, `status`, `created_at`, `updated_at`) VALUES
-(1, 7, 390000.00, '201807060001', 'FINISH', '2018-07-06 00:00:00', '2018-07-06 00:00:00'),
+(1, 7, 390000.00, '201807060001', 'CANCEL', '2018-07-06 00:00:00', '2021-01-04 18:52:36'),
 (2, 14, 780000.00, '201807250002', 'PROCESS', '2018-07-26 00:00:00', '2018-10-02 08:50:04');
 
 -- --------------------------------------------------------
@@ -230,7 +229,7 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `roles` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` text COLLATE utf8mb4_unicode_ci,
+  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` enum('ACTIVE','INACTIVE') COLLATE utf8mb4_unicode_ci NOT NULL
@@ -241,23 +240,16 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `username`, `roles`, `address`, `phone`, `avatar`, `status`) VALUES
-(1, 'Muhammad Azamuddin', 'administrator@larashop.test', '$2y$10$CaHcu3RjHs2Yr1c.hgFOVeM77aJ2soN7JUBLyLyL1NZGMY2UqY3Vq', 'JVPtH8RguhTsoHhlnTi9Iv4sHuQL3vV3pWcz0sOSUqc9DAyXlstgmYaG1NPV', '2018-07-11 02:44:43', '2018-10-13 15:11:21', 'administrator', '[\"ADMIN\"]', 'Jalan Harapan Mulya III no 7\r\nKel Harapan Mulya, Kec Kemayoran', '85781107766', 'avatars/wR1CrdcdvXRkqPeF4cOJkjccYjWLQ4YV4Yj41DaQ.jpeg', 'ACTIVE'),
-(4, 'Muhammad Azamuddin', 'azamuddin@live.com', 'bismillah', NULL, '2018-07-12 09:17:37', '2018-07-15 03:25:08', 'azamuddin91', '[\"ADMIN\",\"CUSTOMER\"]', 'Jalan Haji Sarmili', '0871111111', 'avatars/10o6t1i0mRM2BTNHnTYKrh69mSs68li91EDSmoXs.jpeg', 'ACTIVE'),
-(7, 'Nadia Nurul Mila', 'nadia@gmail.com', 'bismillah', NULL, '2018-07-13 07:59:30', '2018-07-15 09:13:02', 'nadia', '[\"STAFF\",\"CUSTOMER\"]', NULL, NULL, NULL, 'INACTIVE'),
-(8, 'Muhammad Azamuddin', 'hana@humaira.com', 'bismillah', NULL, '2018-07-14 02:47:08', '2018-10-02 08:42:05', 'hana', '[\"ADMIN\",\"STAFF\"]', 'Jalan Haji Sarmili 34', '87808490517', NULL, 'ACTIVE'),
-(9, 'User Empat', 'user4@gmail.com', 'bismillah', NULL, '2018-07-14 02:50:04', '2018-07-14 02:50:04', 'user4', '[\"CUSTOMER\"]', NULL, NULL, NULL, 'ACTIVE'),
-(10, 'User Lima', 'user5@gmail.com', 'bismillah', NULL, '2018-07-14 02:53:48', '2018-07-14 02:53:48', 'user5', '[\"ADMIN\"]', NULL, NULL, NULL, 'ACTIVE'),
-(11, 'User Enam', 'user6@gmail.com', 'bismillah', NULL, '2018-07-14 02:55:38', '2018-07-14 02:55:38', 'user6', '[\"CUSTOMER\"]', NULL, NULL, NULL, 'ACTIVE'),
+(1, 'Muhammad Azamuddin', 'administrator@larashop.test', '$2y$10$CaHcu3RjHs2Yr1c.hgFOVeM77aJ2soN7JUBLyLyL1NZGMY2UqY3Vq', 'JVPtH8RguhTsoHhlnTi9Iv4sHuQL3vV3pWcz0sOSUqc9DAyXlstgmYaG1NPV', '2018-07-11 02:44:43', '2021-01-06 06:34:10', 'administrator', '[\"ADMIN\"]', 'Jalan Harapan Mulya III no 7\r\nKel Harapan Mulya, Kec Kemayoran', '85781107766', 'avatars/ISzYK4DDkrU78vhi1PWBMoKHXheCF2dIipNWXbM7.png', 'ACTIVE'),
+(7, 'Nadia Nurul Mila', 'nadia@gmail.com', 'bismillah', NULL, '2018-07-13 07:59:30', '2021-01-06 06:36:03', 'nadia', '[\"STAFF\",\"CUSTOMER\"]', 'Jalan Alamat ini jika alamat ini kosong', '083948324323', NULL, 'INACTIVE'),
+(11, 'User Enam', 'user6@gmail.com', 'bismillah', NULL, '2018-07-14 02:55:38', '2021-01-06 07:36:08', 'user6', '[\"CUSTOMER\"]', 'asasasasssssssssssaasdasdddddddd', '111111111111', NULL, 'ACTIVE'),
 (12, 'Ridwan Mutaffaq', 'ridwan@gmail.com', 'bismillah', NULL, '2018-07-14 05:38:30', '2018-07-14 05:38:30', 'ridwan', '[\"STAFF\"]', 'Jalan Harapan Mulya III no 7\r\nKel Harapan Mulya, Kec Kemayoran', '85781107766', NULL, 'ACTIVE'),
-(14, 'Habib Asagaf', 'habib@gmail.com', 'bismillah', NULL, '2018-07-15 04:09:37', '2018-07-15 04:09:37', 'habib', '[\"ADMIN\",\"STAFF\"]', 'Jalan Harapan Mulya III no 7\r\nKel Harapan Mulya, Kec Kemayoran', '85781107766', 'avatars/wg7lugTyeRLtfjzzqr8vpRklOaOSHY99EdLFjTyy.jpeg', 'ACTIVE'),
+(14, 'Habib Asagaf', 'habib@gmail.com', 'bismillah', NULL, '2018-07-15 04:09:37', '2021-01-06 06:34:30', 'habib', '[\"ADMIN\",\"STAFF\"]', 'Jalan Harapan Mulya III no 7\r\nKel Harapan Mulya, Kec Kemayoran', '85781107766', 'avatars/2aVe8GlnhQXoZA6iFYmS4RIOgjbGoz6TbdRO4FQL.png', 'ACTIVE'),
 (15, 'Iqbal Kholis', 'iqbal@gmail.com', 'bismillah', NULL, '2018-07-15 04:10:15', '2018-07-15 04:10:15', 'iqbal', '[\"ADMIN\"]', 'Jl Dr Wahidin No 1. Kompleks Kementerian Keuangan. Gedung Djuand\r\nKel Harapan Mulya, Kec Kemayoran', '85781150352', NULL, 'ACTIVE'),
-(17, 'User ABC', 'userabc@gmail.com', 'bismillah', NULL, '2018-07-15 10:03:19', '2018-07-15 10:03:19', 'userabc', '[\"STAFF\"]', 'Jalan Harapan Mulya III no 7\r\nKel Harapan Mulya, Kec Kemayoran', '85781107766', NULL, 'ACTIVE'),
-(18, 'user def', 'userdef@gmail.com', 'bismillah', NULL, '2018-07-15 10:03:47', '2018-07-15 10:03:47', 'userdef', '[\"ADMIN\",\"STAFF\"]', 'Jalan Harapan Mulya III no 7\r\nKel Harapan Mulya, Kec Kemayoran', '85781107766', NULL, 'ACTIVE'),
-(19, 'User Sepuluh', 'user10@gmail.com', 'bismillah', NULL, '2018-07-31 09:29:52', '2018-07-31 09:29:52', 'user10', '[\"STAFF\"]', 'Jalan Harapan Mulya III no 7\r\nKel Harapan Mulya, Kec Kemayoran', '085781107766', 'avatars/7Rsd6DkvGWqyq2pfYqQTDRIRzpLI74nCKynGU64u.png', 'ACTIVE'),
-(20, 'User Sebelas', 'user11@gmail.com', '$2y$10$e3uPymGhFeCcv20jzw1gvejgjSbWgMUoByLlV5RmH0lDjNMxD7pMm', '4yNWujTy6VCCXhxFB0SBVMIrHmfzQ44seRgQ0QZbOQedrlHpjmYxqR9qiXxr', '2018-07-31 09:34:57', '2018-07-31 09:34:57', 'user11', '[\"STAFF\"]', 'Jalan Harapan Mulya III no 7\r\nKel Harapan Mulya, Kec Kemayoran', '85781107766', 'avatars/lIjmJvoWLaIOtihHKQjQhzRlwTCvMmSb0B2WNacy.png', 'ACTIVE'),
-(21, 'User Biasa', 'userbiasa@gmail.com', '$2y$10$dFe7avNTz6N1aXUWhKUJZ.1HqrrxtCuBKapADehUeQoQpPKYXOkiS', 'A8Ta3nEgHuv135Qc2IeHRPbVaMyPY4f5SoPjWVMngmG0n3MNOLYGHAOfHAJF', '2018-07-31 09:39:11', '2018-07-31 09:39:11', 'userbiasa', '[\"CUSTOMER\"]', 'Jalan Harapan Mulya III no 7\r\nKel Harapan Mulya, Kec Kemayoran', '85781107766', 'avatars/Cvkp78zLjkP7p6uHQCup3a5oU23i64z7ulNHYJYE.png', 'ACTIVE'),
-(22, 'Dhermaga Surya Wicaksono', 'dhermaga.s@gmail.com', '$2y$10$xm582xQYnHPsGc/.1Mx5/ua43lVk8NAv.vOh06uHlyMFCUCLzU8tG', NULL, '2018-10-02 07:05:11', '2018-10-02 07:05:33', 'dhermaga', '[\"STAFF\"]', 'Jalan Haji Sarmili 34', '87808490517', 'avatars/VpaPN4EUezqp6L2U3S5BQkF7IGCuWhosZxoLUNFZ.png', 'ACTIVE'),
-(23, 'Danar Gumilang Putera', 'danar.gp@gmail.com', '$2y$10$p56x0qCNOuuYr23XT6PIu.6yWpCdN9nRuw1YTwBDXzyVuUquMicFm', NULL, '2018-10-02 08:41:34', '2018-10-02 08:41:34', 'danar.gp', '[\"STAFF\"]', 'Jalan Haji Sarmili 34', '87808490517', 'avatars/DGjJ39VhPJkGqdx9M04GX4n9fST18ONduodKFzmK.png', 'ACTIVE');
+(17, 'User ABC', 'userabc@gmail.com', 'bismillah', NULL, '2018-07-15 10:03:19', '2021-01-05 20:23:38', 'userabc', '[\"STAFF\"]', 'Jalan Harapan Mulya III no 7\r\nKel Harapan Mulya, Kec Kemayoran', '85781107766', NULL, 'INACTIVE'),
+(24, 'Fathul Miun', 'fmuiin14@gmail.com', '$2y$10$F.HweXxRA/wva/EBmwR75eLFOg9.iyDUqvBIxPmPodyvmYbw.msk6', NULL, '2020-11-15 01:10:11', '2020-11-18 07:11:25', 'fmuiin14', '[\"ADMIN\",\"STAFF\",\"CUSTOMER\"]', 'Depok, Jawa Barat, Indonesia', '089679590971', 'avatars/O8CxkfGykWh9BGjpHFch5JpGo8Olt9wH1eOyPsIh.jpeg', 'ACTIVE'),
+(25, 'costumer', 'costumer@gmail.com', '$2y$10$WDX0rbQ8dMkSse8daXt38O3yHQ4oToWCo6icjyz/QjSSapUOvj3DK', NULL, '2021-01-05 07:43:28', '2021-01-05 07:43:28', 'costumer', '[\"CUSTOMER\"]', 'Ini nama alamat jalan', '08977788712', 'avatars/UYs1dJiYfae98CJwvJ7krsMUz5pQ8ZmAJeuwa53c.jpeg', 'ACTIVE'),
+(26, 'Testing Paling baru', 'testingaru@gmail.com', '$2y$10$zkAz.bdrxUuLD5WCVG/fquCXJW//lHlzF/P.6OZYkRzzI0fP5giSu', NULL, '2021-01-05 20:14:21', '2021-01-05 20:14:21', 'fmuiin14@gmail.com', '[\"ADMIN\",\"STAFF\",\"CUSTOMER\"]', 'Testiung Alamat baru', '08977766713', 'avatars/yMF8WYMkz7xX4EuBskRm8tp2PSrnQN8QRvvQM1e9.png', 'ACTIVE');
 
 --
 -- Indexes for dumped tables
@@ -333,7 +325,7 @@ ALTER TABLE `books`
 -- AUTO_INCREMENT for table `book_category`
 --
 ALTER TABLE `book_category`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `book_order`
@@ -363,7 +355,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Constraints for dumped tables

@@ -67,6 +67,7 @@ Books List
         <table class="table table-bordered table-stripped">
             <thead>
                 <tr>
+                    <th><b>No</b></th>
                     <th><b>Cover</b></th>
                     <th><b>Title</b></th>
                     <th><b>Author</b></th>
@@ -78,8 +79,9 @@ Books List
                 </tr>
             </thead>
             <tbody>
-                @foreach ($books as $book)
+                @foreach ($books as $index => $book)
                 <tr>
+                    <td>{{$index +1}}</td>
                     <td>
                         @if($book->cover)
                         <img src="{{asset('storage/'.$book->cover)}}" width="96px">
