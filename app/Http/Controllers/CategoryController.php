@@ -120,7 +120,6 @@ class CategoryController extends Controller
 
         \Validator::make($request->all(), [
             "name" => "required|min:3|max:20",
-            "image" => "required",
             "slug" => [
                 "required",
                 Rule::unique("categories")->ignore($category->slug, "slug")

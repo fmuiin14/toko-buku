@@ -67,11 +67,11 @@ class UserController extends Controller
     {
 
         \Validator::make($request->all(), [
-            "name" => "required|min:5|max:100",
-            "username" => "required|min:5|max:20",
+            "name" => "required|min:5|max:50",
+            "username" => "required|min:5|max:20|alpha_dash",
             "roles" => "required",
-            "phone" => "required|digits_between:10,12",
-            "address" => "required|min:20|max:200",
+            "phone" => "required|digits_between:10,13",
+            "address" => "required|min:10|max:200",
             "avatar" => "required",
             "email" => "required|email|unique:users",
             "password" => "required",

@@ -44,7 +44,7 @@ Users List
 </div>
 @endif
 
-<div class="row mb-3 col-md-12 float-right">
+<div class="row mb-3 col-md-12">
     <!-- <div class="col-md-12 text-right"> -->
     <a href="{{route('users.create')}}" class="btn btn-primary">Create user</a>
     <!-- </div> -->
@@ -54,6 +54,7 @@ Users List
 <table class="table table-bordered">
     <thead>
         <tr>
+            <th><b>No</b></th>
             <th><b>Name</b></th>
             <th><b>Username</b></th>
             <th><b>Email</b></th>
@@ -63,8 +64,10 @@ Users List
         </tr>
     </thead>
     <tbody>
+        <?php $i = 1; ?>
         @foreach($users as $user)
         <tr>
+            <td><?= $i++; ?></td>
             <td>{{$user->name}}</td>
             <td>{{$user->username}}</td>
             <td>{{$user->email}}</td>

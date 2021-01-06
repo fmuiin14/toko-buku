@@ -46,7 +46,7 @@ Edit Category
             <span>Current Image</span><br><br>
             <img src="{{asset('storage/'.$category->image)}}" width="120"><br><br>
         @endif
-        <input type="file" class="form-control {{$errors->first('image') ? "is-invalid" : ""}}" name="image">
+        <input type="file" class="form-control" name="image">
         <small class="text-muted">Kosongkan jika tidak ingin mengubah gambar</small>
 
         <br><br>
