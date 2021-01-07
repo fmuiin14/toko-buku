@@ -19,6 +19,8 @@ Project ini dibuat oleh Fathul Muiin, merupakan sebuah studi kasus pembelajaran 
 - Search
 - Dll
 
+
+
 ## Cara Instalasi Aplikasi Ini Pada Komputer/ Laptopmu
 - Download Project ini, bisa kamu clone (git clone https://github.com/fmuiin14/toko-buku.git) , atau download dengan cara zip.
 - Letakkan pada folder instalasi XAMPP (Biasanya di C:\xampp\htdocs)
