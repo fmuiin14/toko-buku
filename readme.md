@@ -1,6 +1,6 @@
 ## Larashop
 
-![Screenshot_82](https://user-images.githubusercontent.com/17643540/103898731-f58a7b80-5127-11eb-8c47-4cf803e99f88.png)
+![Screenshot_83](https://user-images.githubusercontent.com/17643540/103909086-d5fa4f80-5135-11eb-9df5-90d018572727.png)
 
 ## Introduction
 Aplikasi **Manajemen Toko Buku** dengan menggunakan Framework Laravel Versi 6. Styling menggunakan [Polished Template](https://azamuddin.github.io/polished-template/).
