@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 06, 2021 at 04:29 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.3.23
+-- Host: localhost:3306
+-- Generation Time: Jan 07, 2021 at 09:47 PM
+-- Server version: 10.3.27-MariaDB
+-- PHP Version: 7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `larashop`
+-- Database: `u4446218_larashop`
 --
 
 -- --------------------------------------------------------
@@ -52,7 +53,7 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`id`, `title`, `slug`, `description`, `author`, `publisher`, `cover`, `price`, `views`, `stock`, `status`, `created_by`, `updated_by`, `deleted_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(2, 'How to become great man', 'how-to-become-great-man', 'The book description', 'Noone', 'Nopublisher', 'book-covers/riSvIG5fsoNOCE0OhwIdNh3EewgYuCLAqEPSaV9w.png', 390000.00, 0, 330, 'PUBLISH', 1, 24, NULL, '2018-07-26 07:20:14', '2021-01-06 00:10:15', NULL),
+(2, 'How to become great man', 'how-to-become-great-man', 'The book description', 'Noone', 'Nopublisher', 'book-covers/riSvIG5fsoNOCE0OhwIdNh3EewgYuCLAqEPSaV9w.png', 390000.00, 0, 330, 'PUBLISH', 1, 24, NULL, '2018-07-26 07:20:14', '2021-01-07 06:51:48', '2021-01-07 06:51:48'),
 (4, 'How to become ninja Developer', 'how-to-become-ninja-developer', 'Descriptions goes here', 'Muhammad Azamuddin', 'Indie Publisher', 'book-covers/2x9OEHtj57kVp9UZe9Av39TBMNphRw8FrEh4Nium.png', 239000.00, 0, 9, 'PUBLISH', 1, NULL, NULL, '2018-10-02 07:06:39', '2018-10-02 08:42:41', NULL);
 
 -- --------------------------------------------------------
@@ -249,7 +250,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `creat
 (17, 'User ABC', 'userabc@gmail.com', 'bismillah', NULL, '2018-07-15 10:03:19', '2021-01-05 20:23:38', 'userabc', '[\"STAFF\"]', 'Jalan Harapan Mulya III no 7\r\nKel Harapan Mulya, Kec Kemayoran', '85781107766', NULL, 'INACTIVE'),
 (24, 'Fathul Miun', 'fmuiin14@gmail.com', '$2y$10$F.HweXxRA/wva/EBmwR75eLFOg9.iyDUqvBIxPmPodyvmYbw.msk6', NULL, '2020-11-15 01:10:11', '2020-11-18 07:11:25', 'fmuiin14', '[\"ADMIN\",\"STAFF\",\"CUSTOMER\"]', 'Depok, Jawa Barat, Indonesia', '089679590971', 'avatars/O8CxkfGykWh9BGjpHFch5JpGo8Olt9wH1eOyPsIh.jpeg', 'ACTIVE'),
 (25, 'costumer', 'costumer@gmail.com', '$2y$10$WDX0rbQ8dMkSse8daXt38O3yHQ4oToWCo6icjyz/QjSSapUOvj3DK', NULL, '2021-01-05 07:43:28', '2021-01-05 07:43:28', 'costumer', '[\"CUSTOMER\"]', 'Ini nama alamat jalan', '08977788712', 'avatars/UYs1dJiYfae98CJwvJ7krsMUz5pQ8ZmAJeuwa53c.jpeg', 'ACTIVE'),
-(26, 'Testing Paling baru', 'testingaru@gmail.com', '$2y$10$zkAz.bdrxUuLD5WCVG/fquCXJW//lHlzF/P.6OZYkRzzI0fP5giSu', NULL, '2021-01-05 20:14:21', '2021-01-05 20:14:21', 'fmuiin14@gmail.com', '[\"ADMIN\",\"STAFF\",\"CUSTOMER\"]', 'Testiung Alamat baru', '08977766713', 'avatars/yMF8WYMkz7xX4EuBskRm8tp2PSrnQN8QRvvQM1e9.png', 'ACTIVE');
+(26, 'Testing Paling baru', 'testingaru@gmail.com', '$2y$10$zkAz.bdrxUuLD5WCVG/fquCXJW//lHlzF/P.6OZYkRzzI0fP5giSu', NULL, '2021-01-05 20:14:21', '2021-01-05 20:14:21', 'fmuiin14@gmail.com', '[\"ADMIN\",\"STAFF\",\"CUSTOMER\"]', 'Testiung Alamat baru', '08977766713', 'avatars/yMF8WYMkz7xX4EuBskRm8tp2PSrnQN8QRvvQM1e9.png', 'ACTIVE'),
+(28, 'Administrator', 'admin@gmail.com', '$2y$10$fLY8qGhPGTftKweywiADfeuX6Ew7NYHHHHlpMnWKnFJAR0qAfkFMG', 'g2snRyFSZeIjWX43YTifux0YhUxxMI0smQ7kEAZbZjnZwVnqn6cmPAGrX8Bn', '2021-01-06 08:32:35', '2021-01-06 08:32:35', 'admin', '[\"ADMIN\",\"STAFF\",\"CUSTOMER\"]', 'admin untuk mengatur segala hal bisa pokoknya kalau admin mah', '081111111111', 'avatars/nX6GDvopSJLNHEZame0a714Lv870KjLJjO9PLWyn.png', 'ACTIVE');
 
 --
 -- Indexes for dumped tables
@@ -355,7 +357,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Constraints for dumped tables
